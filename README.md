@@ -1,4 +1,4 @@
-# Short explanation
+# Short Explanation
 
 This script try to perform the same task as a human would do when each connection would be checked manual.
 Screen, Minicom etc. would present the data as UTF-8 encoded and this function use this property to check for the following criteria:
