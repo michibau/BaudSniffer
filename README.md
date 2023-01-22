@@ -47,3 +47,8 @@ The port timeout at the moment is 10s, which at the moment determines the runnin
 - 320 Combinations: 5xParity x 2xStopbit x 2xBitsize * 16 Baudrates * TimeoutPort ==> 50 min
 
 - 960 Combinations: 5xParity x 3xStopbit x 4xBitsize * 16 Baudrates * TimeoutPort ==> 160 min
+
+# Example for the summary
+
+![image](https://user-images.githubusercontent.com/6764544/213922750-f3a0f364-29ab-41d8-aecc-505215173f65.png)
+
