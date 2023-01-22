@@ -1,6 +1,6 @@
-# Short Explanation
+# Short explanation
 
-This script trys to perform the same task as a human would do when each connection would be checked manual.
+This script try to perform the same task as a human would do when each connection would be checked manual.
 Screen, Minicom etc. would present the data as UTF-8 encoded and this function use this property to check for the following criteria:
 
 - "text.encode() == serialData" checks if serial data and UTF-8 encoded text are the same
@@ -18,10 +18,10 @@ def estimateConnectionQuality(text: str,
             return True
 ```
 
-If all the point above are fulfilled the serial properties like baudrate etc. should be correct. 
+If all the points above are fulfilled the serial properties like baudrate etc. should be correct. 
 
 
-# Possible Options from pySerial 
+# Possible options from pySerial 
 
 It's based on pySerial. pySerial provides the following options:
 
