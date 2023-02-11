@@ -1,3 +1,10 @@
+# Setup 
+
+````
+pip install pyserial
+````
+
+
 # Short Explanation
 
 This script try to perform the same task as a human would do when each connection would be checked manual.
