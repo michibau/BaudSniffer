@@ -4,9 +4,6 @@ import platform
 import os
 import time
 
-# TODO: Standalone Tool with Options as a next step
-# TODO: Database with tested devices
-
 ## Constants 
 ### For Linux: /dev/ttyS1 etc. ; For Windows: COM1 etc. 
 SETTING_SERIAL_PORT = 'COM4' 
