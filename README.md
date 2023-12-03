@@ -1,11 +1,13 @@
-# Setup 
+# Project Explanation
+
+## Setup 
 
 ````
 pip install pyserial
 ````
 
 
-# Short Explanation
+## Short Explanation
 
 This script try to perform the same task as a human would do when each connection would be checked manual.
 Screen, Minicom etc. would present the data as UTF-8 encoded and this function use this property to check for the following criteria:
@@ -28,7 +30,7 @@ def estimateConnectionQuality(text: str,
 If all the points above are fulfilled the serial properties like baudrate etc. should be correct. 
 
 
-# Possible options from pySerial 
+## Possible options from pySerial 
 
 It's based on pySerial. pySerial provides the following options:
 
@@ -45,7 +47,8 @@ PARITY_NONE, PARITY_EVEN, PARITY_ODD, PARITY_MARK, PARITY_SPACE = 'N', 'E', 'O',
  }
 
 ````
-# Assumption for running time
+
+## Assumption for running time
 
 The port timeout at the moment is 10s, which at the moment determines the running time:
 
@@ -55,7 +58,13 @@ The port timeout at the moment is 10s, which at the moment determines the runnin
 
 - 960 Combinations: 5xParity x 3xStopbit x 4xBitsize * 16 Baudrates * TimeoutPort ==> 160 min
 
-# Example for the summary
+## Example for the summary
 
 ![image](https://user-images.githubusercontent.com/6764544/213922750-f3a0f364-29ab-41d8-aecc-505215173f65.png)
+
+# Code Rules
+
+## Cheatsheet for Codestyle
+
+https://peps.python.org/pep-0008/
 
