@@ -1,11 +1,12 @@
 # Project Explanation
 
-## Setup 
+## Setup
 
-````
-pip install pyserial
-````
-
+```bash
+python -m pip install .
+# for dev dependencies use:
+python -m pip install.[dev]
+```
 
 ## Short Explanation
 
@@ -18,23 +19,22 @@ Screen, Minicom etc. would present the data as UTF-8 encoded and this function u
 
 The core is this little function:
 
+```python
+def _estimate_connection_quality(text: str, serialdata: bytes) -> bool:
+    if text.encode() == serialdata and text and text.isprintable():
+        print("\n########### Connection probably ok #############\n")
+        return True
+    return False
 ```
-def estimateConnectionQuality(text: str, 
-                              serialData: bytes):
 
-    if (text.encode() == serialData) == True and (not text) == False and text isprintable() == True:  
-            print ('\n########### Connection Properly ok #############\n')
-            return True
-```
-
-If all the points above are fulfilled the serial properties like baudrate etc. should be correct. 
+If all the points above are fulfilled the serial properties like baudrate etc. should be correct.
 
 
-## Possible options from pySerial 
+## Possible options from pySerial
 
 It's based on pySerial. pySerial provides the following options:
 
-```  
+```python
 PARITY_NONE, PARITY_EVEN, PARITY_ODD, PARITY_MARK, PARITY_SPACE = 'N', 'E', 'O', 'M', 'S'
  STOPBITS_ONE, STOPBITS_ONE_POINT_FIVE, STOPBITS_TWO = (1, 1.5, 2)
  FIVEBITS, SIXBITS, SEVENBITS, EIGHTBITS = (5, 6, 7, 8)
@@ -46,13 +46,13 @@ PARITY_NONE, PARITY_EVEN, PARITY_ODD, PARITY_MARK, PARITY_SPACE = 'N', 'E', 'O',
      PARITY_SPACE: 'Space',
  }
 
-````
+```
 
 ## Assumption for running time
 
 The port timeout at the moment is 10s, which at the moment determines the running time:
 
-- 192 Combinations: 3xParity x 2xStopbit x 2xBitsize * 16 Baudrates * TimeoutPort ==> 32 min --> Should be good for most devices 
+- 192 Combinations: 3xParity x 2xStopbit x 2xBitsize * 16 Baudrates * TimeoutPort ==> 32 min --> Should be good for most devices
 
 - 320 Combinations: 5xParity x 2xStopbit x 2xBitsize * 16 Baudrates * TimeoutPort ==> 50 min
 
@@ -61,10 +61,3 @@ The port timeout at the moment is 10s, which at the moment determines the runnin
 ## Example for the summary
 
 ![image](https://user-images.githubusercontent.com/6764544/213922750-f3a0f364-29ab-41d8-aecc-505215173f65.png)
-
-# Code Rules
-
-## Cheatsheet for Codestyle
-
-https://peps.python.org/pep-0008/
-
