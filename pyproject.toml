@@ -1,0 +1,70 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "baud-sniffer"
+authors = [
+  { name="Michael Baurschmid", email="mail@michaelbaurschmid.com" },
+]
+description = "Check for a connection like a human would do, just better.🚀"
+readme = "README.md"
+license = {file = "LICENSE.txt"}
+requires-python = ">=3.8"
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.8",
+  "Operating System :: OS Independent",
+]
+
+dependencies = [
+  "pyserial",
+]
+
+dynamic = ["version"]
+
+[project.urls]
+"Homepage" = "https://github.com/michibau/BaudSniffer"
+"Bug Tracker" = "https://github.com/michibau/BaudSniffer/issues"
+
+[tool.mypy]
+# https://github.com/python/mypy/issues/2410
+ignore_missing_imports = true
+disallow_untyped_defs = true
+disallow_untyped_calls = true
+disallow_incomplete_defs = true
+
+[project.optional-dependencies]
+dev=[
+    "build",
+    "mypy",
+    "pre-commit",
+    "ruff",
+]
+
+
+[tool.ruff]
+# See rules: https://beta.ruff.rs/docs/rules/
+select = [
+    "C",    # flake8-comprehensions
+    "D",    # pydocstyle
+    "E",    # pycodestyle errors
+    "F",    # pyflakes
+    "I",    # isort
+    "N",    # pep8-naming
+    "PTH",  # flake8-use-pathlib
+    "PGH",  # pygrep
+    "RUF",  # ruff-specific rules
+    "UP",   # pyupgrade
+    "SIM",  # flake8-simplify
+    "W",    # pycodestyle warnings
+]
+
+include = ["*.py", "*.pyi", "**/pyproject.toml"]
+
+ignore = [
+    "E501",  # line too long, handled by black
+    "D203",  # one-blank-line-before-class
+    "D212",  # multi-line-summary-first-line
+]
