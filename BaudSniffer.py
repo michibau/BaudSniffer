@@ -1,5 +1,5 @@
-import serial
-import serial.serialutil
+import serial 
+import serial.serialutil 
 import platform
 import os
 import time
@@ -113,7 +113,7 @@ def try_baudrate(serialport_parameter:  str):
                               new_serialport_parameter[0], 
                               new_serialport_parameter[1], 
                               new_serialport_parameter[2])
-        bytes_in_text = serialdata.decode(encoding='UTF-8', errors="ignore")
+        bytes_in_text = serialdata.decode(encoding='UTF-8', errors="ignore") # type: ignore
         display_text(baudrate, serialport_parameter, serialdata, bytes_in_text)
 
         validConnectionOption = estimate_connection_quality(bytes_in_text, 
