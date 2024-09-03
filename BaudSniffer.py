@@ -60,7 +60,7 @@ def open_port(baud_set: int,
                             new_bytesize_set, new_parity_set, 
                             new_stopbit_set, timeout=TIMEOUT_SERIAL_PORT_SEC)  
         data_serial = ser.read(BYTE_SIZE_TO_READ) 
-        # close portSSS
+        # close port
         ser.close()             
         return data_serial
     except serial.serialutil.SerialException:
@@ -69,13 +69,12 @@ def open_port(baud_set: int,
 
     
 def set_stopbit(stop_bit: str):
-
     if stop_bit == "1": 
         return serial.STOPBITS_ONE
     elif stop_bit == "2":
         return serial.STOPBITS_TWO
     else:
-        print ('Unsupported Stopbit (no Option): ', stop_bit)
+        print ('Unsupported Stopbit (no Option)')
 
 def set_bytesize(byte_size: str):
 
@@ -88,7 +87,7 @@ def set_bytesize(byte_size: str):
     elif byte_size == "5":
      return serial.FIVEBITS
     else:
-     print ('Unspupported Byte Size (no Option): ', byte_size) 
+     print ('Unspupported Byte Size (no Option): ') 
 
 def set_parity (parity: str):
 
@@ -100,7 +99,6 @@ def set_parity (parity: str):
         return serial.PARITY_ODD
     elif parity == "M":
         return serial.PARITY_MARK
-
     elif parity == "S":
         return serial.PARITY_SPACE
     else: 
@@ -260,6 +258,6 @@ def main():
     display_best_connection()    
     script_end_time = time.time()
     print("\nRuntime: ", round((script_end_time-srcipt_start_time) * 0.0166667, 2) , " min")  # 1s = 0.0166667 min
-    stop_program ()
+    #stop_program ()
 
 main()
