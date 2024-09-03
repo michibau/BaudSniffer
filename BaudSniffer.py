@@ -60,12 +60,14 @@ def open_port(baud_set: int,
                             new_bytesize_set, new_parity_set, 
                             new_stopbit_set, timeout=TIMEOUT_SERIAL_PORT_SEC)  
         data_serial = ser.read(BYTE_SIZE_TO_READ) 
-        # close port
+        # close portSSS
         ser.close()             
         return data_serial
     except serial.serialutil.SerialException:
-        print ("serial.serialutil.SerialException rised")
+        print ("serial.serialutil.SerialException rised\n")
+        return bytes('Fail', 'utf-8')
 
+    
 def set_stopbit(stop_bit: str):
 
     if stop_bit == "1": 
@@ -113,9 +115,8 @@ def try_baudrate(serialport_parameter:  str):
                               new_serialport_parameter[0], 
                               new_serialport_parameter[1], 
                               new_serialport_parameter[2])
-        bytes_in_text = serialdata.decode(encoding='UTF-8', errors="ignore") # type: ignore
+        bytes_in_text = serialdata.decode(encoding='UTF-8', errors="ignore") 
         display_text(baudrate, serialport_parameter, serialdata, bytes_in_text)
-
         validConnectionOption = estimate_connection_quality(bytes_in_text, 
                                                           serialdata)
         if validConnectionOption == True:
@@ -152,7 +153,7 @@ def slice_serialport_parameter (serialport_parameter_string: str):
 def estimate_connection_quality(text: str, 
                               serialdata: bytes):
 
-    if (text.encode() == serialdata) == True and (not text) == False and text.isprintable() == True:  
+    if (text.encode() == serialdata) == True and (not text) == False and text.isprintable() == True and text != "Fail":  
             print ('\n########### Connection probably ok #############\n')
             return True
 
@@ -182,13 +183,17 @@ def display_best_connection():
         print("\t", connection_list[counter_display_connection][0], "\t\t\t\t", 
               connection_list[counter_display_connection][1], "bps")
         counter_display_connection+=1
+    try:
+        while counter_sorting_baud < len(connection_list):
+            if best_baudrate < connection_list[counter_sorting_baud][1]:
+                best_baudrate = connection_list[counter_sorting_baud][1]
+                best_combination_text =  str(connection_list[counter_sorting_baud][0]) 
+                + str(connection_list[counter_sorting_baud][1]) + "bps"
+                counter_sorting_baud+=1
+    except:
+        return
+
     
-    while counter_sorting_baud < len(connection_list):
-        if best_baudrate < connection_list[counter_sorting_baud][1]:
-            best_baudrate = connection_list[counter_sorting_baud][1]
-            best_combination_text =  str(connection_list[counter_sorting_baud][0]) 
-            + " " + str(connection_list[counter_sorting_baud][1] + " bps")
-        counter_sorting_baud+=1
     print("\n\n\tBest Connection:", best_combination_text)
 
 
