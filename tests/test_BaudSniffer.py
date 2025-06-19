@@ -4,8 +4,6 @@ from BaudSniffer import main
 import BaudSniffer
 import serial
 
-SETTING_SERIAL_PORT = 'COM4'  
-
 # test_BaudSniffer.py
 
 
