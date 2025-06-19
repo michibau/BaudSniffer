@@ -30,6 +30,7 @@ baudrate_list = [
             128000,
             256000,
     ]
+
 serialport_settings_list =[
             '8N1',
             '8N2',
@@ -67,8 +68,8 @@ def open_port(baud_set: int,
         print ("serial.serialutil.SerialException rised\n")
         return bytes('Fail', 'utf-8')
 
-    
 def set_stopbit(stop_bit: str):
+
     if stop_bit == "1": 
         return serial.STOPBITS_ONE
     elif stop_bit == "2":
@@ -119,8 +120,6 @@ def try_baudrate(serialport_parameter:  str):
                                                           serialdata)
         if validConnectionOption == True:
             connection_list.append((serialport_parameter, baudrate))
-
-    
 
 def slice_serialport_parameter (serialport_parameter_string: str):
 
@@ -190,11 +189,8 @@ def display_best_connection():
                 counter_sorting_baud+=1
     except:
         return
-
     
     print("\n\n\tBest Connection:", best_combination_text)
-
-
 
 def stop_program():
 
