@@ -1,10 +1,10 @@
 import unittest
 from unittest.mock import patch, MagicMock
-import sys
 from BaudSniffer import main
 import BaudSniffer
 import serial
 
+SETTING_SERIAL_PORT = 'COM4'  
 
 # test_BaudSniffer.py
 
