@@ -6,7 +6,7 @@ import time
 
 ## Constants 
 ### For Linux: /dev/ttyS1 etc. ; For Windows: COM1 etc. 
-SETTING_SERIAL_PORT = 'COM4' 
+SETTING_SERIAL_PORT = '' 
 TIMEOUT_SERIAL_PORT_SEC = 10 
 BYTE_SIZE_TO_READ = 10
 
@@ -45,6 +45,11 @@ serialport_settings_list =[
             '7O1',
             '7O2',
         ]
+
+def whatComPort():
+    SETTING_SERIAL_PORT = input("Please enter the serial port "
+    "(e.g. COM4, /dev/ttyS1): ")
+    print(f"Using Serial Port: {SETTING_SERIAL_PORT}")
 
 def open_port(baud_set: int, 
              bytesize_set: int, 
