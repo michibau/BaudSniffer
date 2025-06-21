@@ -1,2 +1,1 @@
-pip install pyserial
-pip install mock
+pip install pyserial‚‚
